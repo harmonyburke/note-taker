@@ -37,6 +37,8 @@ if(newNote){
   ?console.error(err)
   :console.log(`New note added!`)
    )
+// responds with the note in db.json
+   res.json(note)
 };
 });
 app.listen(PORT, () =>
