@@ -7,8 +7,9 @@ const PORT=3001;
 const path = require('path');
 const fs=require('fs');
 const note=require('./db/db.json');
-
-
+// creates an id 
+const uuid =require('./public/assets/js/id')
+ 
 app.use(express.static('public'));
 // middleware pointing to public folder
 
@@ -25,13 +26,14 @@ const newNote=req.body
 note.push(newNote)
 if(newNote){
   // if the body is pulled in the request, new note varaible object will save
-  // const newNoteEl={
-  //   title, 
-  //   text
-  // };
+  const newNoteEl={
+    title, 
+    text,
+    id:uuid(),
+  };
 // converts data to a string to be saved
-  const noteString=JSON.stringify(newNote);
-
+  const noteString=JSON.stringify(newNoteEl);
+// adds data to db.json
   fs.appendFile('./db/db.json', noteString, (err) =>
   err
   ?console.error(err)
