@@ -22,39 +22,22 @@ res.sendFile(path.join(__dirname, 'public/notes.html')));
 app.get('/api/notes', (req,res) =>
 res.sendFile(path.join(__dirname, 'db/db.json')));
 // sends response to notes.html
-app.post('/api/notes', (req,res) =>{
-  const newNote=req.body
-  // request pulls in the body
-  // responds with the note in db.json
-     res.json(note)
-if(newNote){
-  // if the body is pulled in the request, new note varaible object will save
-  const newNoteEl={
-    title, 
-    text,
-    id:uuid(),
-  };
-  fs.readFile('./db/db.json', (err, data) => {
-    if (err) {
-      console.error(err);
-    } else {
-      // Convert string into JSON object
-      const parseNote = JSON.parse(data);
 
-      // Add a new note
-      parseNote.push(newNoteEl);
-// converts data to a string to be saved
-  const noteString=JSON.stringify(newNoteEl);
-// adds data to db.json
-  fs.appendFile('./db/db.json', noteString, (err) =>
-  err
-  ?console.error(err)
-  :console.log(`New note added!`)
-   )
-};
+app.post('/api/notes', (req, res) => {
+  const newNote = req.body;
+
+  fs.readFile(path.join(__dirname, './db/db.json'), 'utf8', (err, data) => {
+      if (err) throw err;
+
+      const notes = JSON.parse(data);
+      notes.push(newNote);
+
+      fs.writeFile(path.join(__dirname, './db/db.json'), JSON.stringify(notes, null, 2), (err) => {
+          if (err) throw err;
+          res.status(200).send('Note added successfully');
+      });
+  });
 });
-}
-})
 app.listen(PORT, () =>
   console.log(`Example app listening at http://localhost:${PORT}`)
 );
