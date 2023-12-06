@@ -4,6 +4,8 @@
 I created this application to make taking notes easy for users.
 
 
+![Alt text](<images\week 11.png>) 
+
 
 ## Installation
 To use this application, install express.js and run npm start in the integrated terminal. 
