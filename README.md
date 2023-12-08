@@ -3,8 +3,8 @@
 
 I created this application to make taking notes easy for users.
 
-Visit this webpage at https://harmonyburke.github.io/note-taker/
-(Application will be deployed in heroku eventually. I am currently waiting on heroku support to get back to me as I am mysteriously locked out of my account.)
+Visit this webpage at https://infinite-oasis-58611-0e754fcce0db.herokuapp.com/notes
+
 ![Alt text](<images\week 11.png>) 
 
 
