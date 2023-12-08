@@ -2,7 +2,7 @@ const express =require('express')
 // importing express.js
 const app=express()
 // initialize express
-const PORT=3001;
+const PORT=process.env.PORT || 3001;
 // specify port
 const path = require('path');
 const fs=require('fs');
